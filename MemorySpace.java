@@ -125,16 +125,62 @@ public class MemorySpace {
 	 */
 	public void defrag() {
 
-		if (freeList.getSize() <= 1) {
-			// Nothing to defrag if there are 0 or 1 blocks in the freeList
-			return;
+			if (freeList.getSize() <= 1) {
+				// Nothing to defrag if the freeList has 0 or 1 block
+				return;
+			}
 
-		for (int i = 0; i <= freeList.getSize(); i++) {
-			if (freeList.getBlock(i).getBaseAddress())
+			sortFreeListByBaseAddress(); // Sort the freeList by base address
+
+
+		// Step 2: Merge neighbor blocks in the sorted list
+			Node current = freeList.getFirst();
+
+			while (current != null && current.next != null) {
+				MemoryBlock currentBlock = current.block;
+				MemoryBlock nextBlock = current.next.block;
+
+				// Check if the current block and the next block are contiguous
+				if (currentBlock.getBaseAddress() + currentBlock.getLength() == nextBlock.getBaseAddress()) {
+					// Merge the next block into the current block
+					int newLength = currentBlock.getLength() + nextBlock.getLength();
+					currentBlock.setLength(newLength);
+
+					// Remove the next block from the list
+					freeList.remove(current.next);
+				} else {
+					// Move to the next block
+					current = current.next;
+				}
+			}
 		}
+/**
+ * Sorts the freeList by the base address of memory blocks in ascending order.
+ */
+		private void sortFreeListByBaseAddress() {
+			if (freeList.getSize() <= 1) {
+				return; // Already sorted if size <= 1
+			}
 
+			// Sort according to adress by swaping elements in the list. if the adress of the first is bigger than the other, it swaps them.
+			boolean swapped;
+			do {
+				swapped = false;
+				Node current = freeList.getFirst();
 
+				while (current != null && current.next != null) {
+					MemoryBlock currentBlock = current.block;
+					MemoryBlock nextBlock = current.next.block;
+
+					if (currentBlock.getBaseAddress() > nextBlock.getBaseAddress()) {
+						// Swap the blocks
+						MemoryBlock temp = current.block;
+						current.block = current.next.block;
+						current.next.block = temp;
+						swapped = true;
+					}
+					current = current.next;
+				}
+			} while (swapped);
 		}
-
-	}
 }
