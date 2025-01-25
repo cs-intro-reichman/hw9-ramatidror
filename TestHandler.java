@@ -2503,6 +2503,7 @@ public class TestHandler {
     ///// Malloc tests /////
     private boolean mallocTest1() {
         MemorySpace memorySpace = new MemorySpace(100);
+        System.out.println(memorySpace.toString());
         String expectedText = "(20 , 80) \n(0 , 20) ";
         String expected = "true";
         String actual = "";

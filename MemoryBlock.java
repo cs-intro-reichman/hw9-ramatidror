@@ -31,6 +31,17 @@ public class MemoryBlock {
 		return baseAddress == other.baseAddress && length == other.length;
 	}
 
+	public int getBaseAddress() {return this.baseAddress; }
+
+	public int getLength() {return this.length; }
+
+	public void setBaseAddress (int newBaseAddress) {this.baseAddress = newBaseAddress; }
+
+	public void setLength (int newLength) {this.length = newLength; }
+
+
+
+
 	/**
 	 * A textual representation of this memory block, for debugging.
 	 * The block's contents appears within parentheses.

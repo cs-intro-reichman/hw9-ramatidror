@@ -1,0 +1,124 @@
+{
+  "tests": [
+    {   
+      "name": "LinkedList class. addFirst",
+      "setup": "javac Test.java",
+      "run": "java Test LINKED_LIST_ADD_FIRST",
+      "comparison": "included",
+      "input": "",
+      "output": "All test cases have passed",
+      "timeout": 10,
+      "points": 6
+    },
+    {
+      "name": "LinkedList class. addLast",
+      "setup": "javac Test.java",
+      "run": "java Test LINKED_LIST_ADD_LAST",
+      "comparison": "included",
+      "input": "",
+      "output": "All test cases have passed",
+      "timeout": 10,
+      "points": 6
+    },
+    {
+      "name": "LinkedList class. getNode",
+      "setup": "javac Test.java",
+      "run": "java Test LINKED_LIST_GET_NODE",
+      "comparison": "included",
+      "input": "",
+      "output": "All test cases have passed",
+      "timeout": 10,
+      "points": 6
+    },
+    {
+      "name": "LinkedList class. getBlock",
+      "setup": "javac Test.java",
+      "run": "java Test LINKED_LIST_GET_BLOCK",
+      "comparison": "included",
+      "input": "",
+      "output": "All test cases have passed",
+      "timeout": 10,
+      "points": 6
+    },
+    {
+      "name": "LinkedList class. add",
+      "setup": "javac Test.java",
+      "run": "java Test LINKED_LIST_ADD",
+      "comparison": "included",
+      "input": "",
+      "output": "All test cases have passed",
+      "timeout": 10,
+      "points": 6
+    },
+    {
+      "name": "LinkedList class. indexOf",
+      "setup": "javac Test.java",
+      "run": "java Test LINKED_LIST_INDEX_OF",
+      "comparison": "included",
+      "input": "",
+      "output": "All test cases have passed",
+      "timeout": 10,
+      "points": 6
+    },
+    {
+      "name": "LinkedList class. removeNode",
+      "setup": "javac Test.java",
+      "run": "java Test LINKED_LIST_REMOVE_NODE",
+      "comparison": "included",
+      "input": "",
+      "output": "All test cases have passed",
+      "timeout": 10,
+      "points": 8
+    },
+    {
+      "name": "LinkedList class. removeElement",
+      "setup": "javac Test.java",
+      "run": "java Test LINKED_LIST_REMOVE_ELEMENT",
+      "comparison": "included",
+      "input": "",
+      "output": "All test cases have passed",
+      "timeout": 10,
+      "points": 8
+    },
+    {
+      "name": "LinkedList class. removeIndex",
+      "setup": "javac Test.java",
+      "run": "java Test LINKED_LIST_REMOVE_INDEX",
+      "comparison": "included",
+      "input": "",
+      "output": "All test cases have passed",
+      "timeout": 10,
+      "points": 8
+    },
+    {
+      "name": "MemorySpace class. malloc",
+      "setup": "javac Test.java",
+      "run": "java Test MEMORY_SPACE_MALLOC",
+      "comparison": "included",
+      "input": "",
+      "output": "All test cases have passed",
+      "timeout": 10,
+      "points": 15
+    },
+    {
+      "name": "MemorySpace class. free",
+      "setup": "javac Test.java",
+      "run": "java Test MEMORY_SPACE_FREE",
+      "comparison": "included",
+      "input": "",
+      "output": "All test cases have passed",
+      "timeout": 10,
+      "points": 15
+    },
+    {
+      "name": "MemorySpace class. defrag",
+      "setup": "javac Test.java",
+      "run": "java Test MEMORY_SPACE_DEFRAG",
+      "comparison": "included",
+      "input": "",
+      "output": "All test cases have passed",
+      "timeout": 10,
+      "points": 10
+    }
+  ]
+}

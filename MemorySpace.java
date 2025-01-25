@@ -57,8 +57,31 @@ public class MemorySpace {
 	 *        the length (in words) of the memory block that has to be allocated
 	 * @return the base address of the allocated block, or -1 if unable to allocate
 	 */
-	public int malloc(int length) {		
-		//// Replace the following statement with your code
+	public int malloc(int length) {
+
+		if (freeList.getSize() == 0) {return -1;}
+
+		for (int i = 0; i < freeList.getSize(); i++) {
+			MemoryBlock freeBlock = freeList.getBlock(i);
+
+			if (freeBlock.getLength() >= length) {
+				int allocatedBaseAddress = freeBlock.getBaseAddress();
+
+				if (freeBlock.getLength() == length) {
+					allocatedList.addLast(freeBlock);
+					freeList.remove(i);
+					return freeBlock.getBaseAddress();
+				} else {
+					int newBaseAddress = freeBlock.getBaseAddress() + length;
+					int newLength = freeBlock.getLength() - length;
+					freeBlock.setBaseAddress(newBaseAddress);
+					freeBlock.setLength(newLength);
+					MemoryBlock allocatedBlock = new MemoryBlock(allocatedBaseAddress, length);
+					allocatedList.addLast(allocatedBlock);
+					return allocatedBlock.getBaseAddress();
+				}
+			}
+		}
 		return -1;
 	}
 
@@ -71,7 +94,20 @@ public class MemorySpace {
 	 *            the starting address of the block to freeList
 	 */
 	public void free(int address) {
-		//// Write your code here
+
+		if (allocatedList.getSize() == 0){
+			throw new IllegalArgumentException ("index must be between 0 and size");
+		}
+
+		for (int i = 0; i < allocatedList.getSize(); i ++) {
+			MemoryBlock check = allocatedList.getBlock(i);
+			if (check.getBaseAddress() == address) {
+				allocatedList.remove(i);
+				freeList.addLast(check);
+				return;
+			}
+		}
+
 	}
 	
 	/**
@@ -79,7 +115,7 @@ public class MemorySpace {
 	 * for debugging purposes.
 	 */
 	public String toString() {
-		return freeList.toString() + "\n" + allocatedList.toString();		
+		return freeList.toString() + "\n" + allocatedList.toString();
 	}
 	
 	/**
@@ -88,7 +124,17 @@ public class MemorySpace {
 	 * In this implementation Malloc does not call defrag.
 	 */
 	public void defrag() {
-		/// TODO: Implement defrag test
-		//// Write your code here
+
+		if (freeList.getSize() <= 1) {
+			// Nothing to defrag if there are 0 or 1 blocks in the freeList
+			return;
+
+		for (int i = 0; i <= freeList.getSize(); i++) {
+			if (freeList.getBlock(i).getBaseAddress())
+		}
+
+
+		}
+
 	}
 }
